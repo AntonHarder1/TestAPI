@@ -3,12 +3,12 @@ using TestAPI.Services;
 
 namespace TestAPI.Manager
 {
-    public interface ITestManager
+    public interface ITestManagerDb
     {
         DbService DbService { get; set; }
 
         Test Add(Test newTest);
         List<Test> GetAll();
-        //List<Test> GetAllTests();
+        DateTime Get();
     }
 }

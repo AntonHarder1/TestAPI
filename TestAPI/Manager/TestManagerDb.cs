@@ -4,7 +4,7 @@ using TestAPI.Services;
 
 namespace TestAPI.Manager
 {
-    public class TestManagerDb : ITestManager
+    public class TestManagerDb : ITestManagerDb
     {
         private ItemDbContext _context;
 
@@ -15,25 +15,25 @@ namespace TestAPI.Manager
 
         public DbService DbService { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public List<Test> TestList { get; set; }
-
-        //public List<Test> GetAllTests()
-        //{
-        //    return _context.GetTest
-        //}
-
-       
+   
         public Test Add(Test newTest)
         {
             _context.Add(newTest);
             _context.SaveChanges();
+
             return newTest;
         }
 
+        public DateTime Get()
+        {
+            var newTest = _context.Table_1.OrderBy(e => e.Dato).LastOrDefault();
+
+            return newTest.Dato;
+        }
         public  List<Test> GetAll()
         {
             using (var context = _context)
             {
-                Console.WriteLine("Where it dies");
                 return context.Table_1.ToList();
             }
         }

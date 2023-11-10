@@ -10,7 +10,7 @@ namespace TestAPI.Controllers
     [ApiController]
     public class TestController : ControllerBase
     {
-        private readonly ITestManager _manager;
+        private readonly ITestManagerDb _manager;
 
         public TestController(ItemDbContext context)
         {
@@ -23,6 +23,12 @@ namespace TestAPI.Controllers
         public ActionResult<IEnumerable<Test>> GetAll()
         {
             return Ok(_manager.GetAll());
+        }
+
+        [HttpGet("/latest")]
+        public ActionResult<Test> Get()
+        {
+            return Ok(_manager.Get());
         }
 
         [ProducesResponseType(StatusCodes.Status201Created)]
