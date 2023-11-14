@@ -7,6 +7,7 @@ namespace TestAPI.Manager
     public class TestManagerDb : ITestManagerDb
     {
         private ItemDbContext _context;
+        public DateTime dt { get; set; }
 
         public TestManagerDb(ItemDbContext context)
         {
@@ -27,10 +28,12 @@ namespace TestAPI.Manager
         public DateTime Get()
         {
             var newTest = _context.Table_1.OrderBy(e => e.Dato).LastOrDefault();
-
-            return newTest.Dato;
+            if (newTest != null)
+                return newTest.Dato;
+            return DateTime.MinValue;
+            //return new DateTime dt = (1,1,1,0,0,0,0);
         }
-        public  List<Test> GetAll()
+        public List<Test> GetAll()
         {
             using (var context = _context)
             {
