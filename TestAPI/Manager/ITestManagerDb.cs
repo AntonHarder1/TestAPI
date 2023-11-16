@@ -10,5 +10,6 @@ namespace TestAPI.Manager
         Test Add(Test newTest);
         List<Test> GetAll();
         DateTime Get();
+        Test GetByID(int id);
     }
 }

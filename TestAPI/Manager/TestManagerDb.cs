@@ -23,21 +23,43 @@ namespace TestAPI.Manager
             _context.SaveChanges();
 
             return newTest;
+
+        }
+
+        /// <summary> Test
+        /// Test
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Test GetByID(int id)
+        {
+            var newTest = _context.Cardsale.Find(id);
+            return newTest;
         }
 
         public DateTime Get()
         {
-            var newTest = _context.Table_1.OrderBy(e => e.Dato).LastOrDefault();
+            var newTest = _context.Cardsale.OrderBy(e => e.ServerTimestamp).LastOrDefault();
             if (newTest != null)
-                return newTest.Dato;
+                return newTest.TerminalTimestamp;
             return DateTime.MinValue;
             //return new DateTime dt = (1,1,1,0,0,0,0);
         }
         public List<Test> GetAll()
         {
-            using (var context = _context)
+            try
             {
-                return context.Table_1.ToList();
+
+
+                using (var context = _context)
+                {
+                    return context.Cardsale.ToList();
+                }
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine(ex);
+                return null;
             }
         }
     }

@@ -17,6 +17,6 @@ namespace TestAPI.Models
         {
         }
 
-        public DbSet<Test> Table_1 { get; set; }
+        public DbSet<Test> Cardsale { get; set; }
     }
 }

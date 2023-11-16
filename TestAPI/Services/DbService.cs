@@ -9,7 +9,7 @@ namespace TestAPI.Services
         {
             using (var context = new ItemDbContext())
             {
-                return await context.Table_1.ToListAsync();
+                return await context.Cardsale.ToListAsync();
             }
         }
 
@@ -19,7 +19,7 @@ namespace TestAPI.Services
             {
                 foreach (Test test in tests)
                 {
-                    context.Table_1.Add(test);
+                    context.Cardsale.Add(test);
                     context.SaveChanges();
                 }
                 context.SaveChanges();

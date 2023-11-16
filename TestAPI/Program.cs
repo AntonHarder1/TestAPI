@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.Swagger;
 using TestAPI.Middelware;
 using TestAPI.Models;
 using TestAPI.Services;
@@ -33,6 +34,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
 
 app.UseCors("AllowAll");
 app.UseAuthorization();

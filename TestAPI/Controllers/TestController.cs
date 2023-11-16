@@ -3,6 +3,8 @@ using TestAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections;
+using Swashbuckle.AspNetCore.Swagger;
+
 
 namespace TestAPI.Controllers
 {
@@ -23,9 +25,22 @@ namespace TestAPI.Controllers
         public ActionResult<IEnumerable<Test>> GetAll()
         {
             return Ok(_manager.GetAll());
+        } 
+        
+     
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [HttpGet("{id}")]
+        public ActionResult<Test> GetById(int id)
+        {
+            return _manager.GetByID(id);
         }
+        /// <summary>
+        /// Test af GetById
+        /// </summary>
+        /// <returns></returns>
 
-        [HttpGet("/latest")]
+        [HttpGet("latest")]
         public ActionResult<Test> Get()
         {
             return Ok(_manager.Get());
