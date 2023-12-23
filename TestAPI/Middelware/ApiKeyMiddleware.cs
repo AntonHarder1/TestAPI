@@ -1,4 +1,4 @@
-﻿namespace TestAPI.Middelware
+﻿namespace API_SQL.Middelware
 {
     public class ApiKeyMiddleware
     {
@@ -14,7 +14,7 @@
                     var extractedApiKey))
             {
                 context.Response.StatusCode = 401;
-                await context.Response.WriteAsync("Api Key was not provided ");
+                await context.Response.WriteAsync("Api Key was not provided");
                 return;
             }
             var appSettings = context.RequestServices.GetRequiredService<IConfiguration>();

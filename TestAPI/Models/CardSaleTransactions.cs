@@ -1,12 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System;
-using System.IO;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
-namespace TestAPI.Models
+
+namespace API_SQL.Models
 {
-    public class Test 
+    public class CardSaleTransactions 
     {
         [Key]
         public int Id { get; set; }
@@ -14,16 +11,17 @@ namespace TestAPI.Models
         public double InvoiceUnitPrice { get; set; }
         public double Quantity { get; set; }
         public double ServerSubTotal { get; set; }
-        public DateTime ServerTimestamp { get; set; }
+        public string ServerTimestamp { get; set; }
         public double ServerUnitPrice { get; set; }
         public string SiteName { get; set; }
         public double SiteNo { get; set; }
-        public DateTime TerminalTimestamp { get; set; }
+        public string TerminalTimestamp { get; set; }
         public double Latitude  { get; set; }
         public double Longitude { get; set; }
-        public DateTime BiTimestamp { get; set; }
+        public string BiTimestamp { get; set; }
+        public int CompanyTraceNo { get; set; }
 
-        public Test(int id, string productName, double invoiceUnitPrice, double quantity, double serverSubTotal, DateTime serverTimestamp, double serverUnitPrice, string siteName, double siteNo, DateTime terminalTimestamp, double latitude, double longitude, DateTime biTimestamp)
+        public CardSaleTransactions(int id, string productName, double invoiceUnitPrice, double quantity, double serverSubTotal, string serverTimestamp, double serverUnitPrice, string siteName, double siteNo, string terminalTimestamp, double latitude, double longitude, string biTimestamp, int companyTraceNo)
         {
             Id = id;
             ProductName = productName;
@@ -38,11 +36,15 @@ namespace TestAPI.Models
             Latitude = latitude;
             Longitude = longitude;
             BiTimestamp = biTimestamp;
+            CompanyTraceNo = companyTraceNo;
         }
 
-        public Test()
+        public CardSaleTransactions()
         {
-
         }
+
+
+
+
     }
 }
